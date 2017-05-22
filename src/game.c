@@ -5,72 +5,39 @@
 ** Login   <Vatoth@epitech.net>
 **
 ** Started on  Tue Jan 31 14:18:54 2017 Quentin Sonnefraud
-** Last update Fri Feb 10 23:02:30 2017 Quentin Sonnefraud
+** Last update Sun Feb 19 09:42:00 2017 Vatoth
 */
 
 #include "navy.h"
 
 int	g_global = 0;
 
-int	main(int argc, char **argv)
-{
-  int	check;
-
-  if (argc == 2 && argv[1][0] == '-' && argv[1][1] == 'h'
-      && argv[1][2] == '\0')
-    check = print_h();
-  else if (argc == 2)
-    {
-      check = player_one(argv[1]);
-      if (check == 0)
-	my_printf("I won\n");
-      else if (check == 1)
-	my_printf("Enemy won\n");
-      else
-	check = 84;
-    }
-  else if (argc == 3)
-    {
-      check = player_two(my_atoi(argv[1]), argv[2]);
-      if (check == 0)
-	my_printf("I won\n");
-      else if (check == 1)
-        my_printf("Enemy won\n");
-      else
-	check = 84;
-    }
-  return (check);
-}
-
 char    **allocation(char *path, int x, int y)
 {
-  char	**tab1;
-  char	*tab2;
-  int	i;
-  int	fd;
+  t_al	v;
 
-  i = 0;
-  if ((fd = open(path, O_RDONLY)) == -1)
+  v.i = 0;
+  if ((v.fd = open(path, O_RDONLY)) == -1)
     return (NULL);
-  if ((tab1 = (char **)malloc(sizeof(char *) * x)) == NULL)
+  if ((v.tab1 = (char **)malloc(sizeof(char *) * x)) == NULL)
     return (NULL);
-  if ((tab2 = (char *)malloc(sizeof(char) * x * y)) == NULL)
+  if ((v.tab2 = (char *)malloc(sizeof(char) * x * y)) == NULL)
     return (NULL);
-  my_memset(tab2, '\0', x * y);
-  while (i < x - 1)
+  my_memset(v.tab2, '\0', x * y);
+  while (v.i < x - 1)
     {
-      tab1[i] = &tab2[i * y];
-      tab1[i++][y] = '\0';
+      v.tab1[v.i] = &v.tab2[v.i * y];
+      v.tab1[v.i++][y] = '\0';
     }
-  tab1[i] = NULL;
-  i = 0;
-  while (i < x -1)
+  v.tab1[v.i] = NULL;
+  v.i = 0;
+  while (v.i < x -1)
     {
-      if (read(fd, tab1[i++], y - 1) == -1)
+      if (read(v.fd, v.tab1[v.i++], y - 1) == -1)
 	return (NULL);
     }
-  close(fd);
-  return (tab1);
+  close(v.fd);
+  return (v.tab1);
 }
 
 t_pos	setpos(char **str)
@@ -114,24 +81,8 @@ char	**analyse(char **str, char **map)
       return (NULL);
     }
   pos = setpos(str);
-  if (pos.x == pos.x1)
-    {
-      while (len > 0)
-	{
-	  map[pos.y++][pos.x] = str[0][0];
-	  len--;
-	}
-    }
-  else if (pos.y == pos.y1)
-    {
-      while (len > 0)
-	{
-	  map[pos.y][pos.x] = str[0][0];
-	  pos.x = pos.x + 2;
-	  len--;
-	}
-    }
-  freeTable2(str);
+  if (dudu(pos, len, str, map) == NULL)
+    return (NULL);
   return (map);
 }
 

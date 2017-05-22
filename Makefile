@@ -5,20 +5,23 @@
 ## Login   <Vatoth@epitech.net>
 ##
 ## Started on  Tue Jan 31 14:48:48 2017 Quentin Sonnefraud
-## Last update Fri Feb 10 11:02:34 2017 Quentin Sonnefraud
+## Last update Mon May 22 23:31:05 2017 
 ##
 
 NAME    = navy
 
-SRC     = function.c \
-	  function2.c \
-	  function3.c \
-	  player1.c \
-	  check.c \
-	  player2.c \
-          game.c \
-	  my_str_to_wordtab.c \
-	  stream.c \
+SRC     = src/function.c \
+	  src/function2.c \
+	  src/function3.c \
+	  src/player1.c \
+	  src/main.c \
+	  src/norme.c \
+	  src/check.c \
+	  src/player2.c \
+          src/game.c \
+	  src/my_str_to_wordtab.c \
+	  src/stream.c \
+	  src/get_next_line.c \
 	  my_printf/my_putchar.c \
 	  my_printf/my_strlen.c \
           my_printf/my_printable.c \
@@ -33,8 +36,16 @@ SRC     = function.c \
 
 OBJS    = $(SRC:.c=.o)
 
-all:    $(OBJS)
-	gcc $(OBJS) -o $(NAME)  -g3 -Wall -Wextra -Werror -pedantic libgnl.a
+CC	= gcc
+
+CPPFLAGS += -I./include
+
+CFLAGS	+= -Wall -Wextra -Werror
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	 $(CC) $(OBJS) -o $(NAME) $(CFLAGS)
 
 clean:
 	rm -f $(OBJS)

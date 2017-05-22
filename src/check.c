@@ -5,32 +5,37 @@
 ** Login   <Vatoth@epitech.net>
 **
 ** Started on  Mon Feb  6 05:26:22 2017 Quentin Sonnefraud
-** Last update Fri Feb 10 21:45:19 2017 Quentin Sonnefraud
+** Last update Mon Feb 20 11:54:29 2017 Vatoth
 */
 
 #include "navy.h"
+
+void	bloup(char *s)
+{
+  if (s[0] >= '1' && s[0] <= '8')
+    my_evil_str(s);
+  if (s[0] >= 'a' && s[0] <= 'h')
+    my_strcapitalize(s);
+}
 
 char	*check(void)
 {
   char	*s;
 
-  my_putstr("\nattack: \e[3m");
+  s = NULL;
+  my_putstr("\nattack: ");
   if ((s = get_next_line(0)) == NULL)
     {
-      my_printf("\e[0m\nwrong positions");
+      my_printf("\nwrong positions");
       return (check());
     }
-  my_putstr("\e[0m");
   if (my_strlen(s) > 2)
     {
       my_putstr("wrong positions");
       free(s);
       return (check());
     }
-  if (s[0] >= '1' && s[0] <= '8')
-    my_evil_str(s);
-  if (s[0] >= 'a' && s[0] <= 'h')
-    my_strcapitalize(s);
+  bloup(s);
   if (s[0] < 'A' || s[0] > 'H' || s[1] < '1' || s[1] > '8')
     {
       my_putstr("wrong positions");
@@ -80,6 +85,7 @@ int     check_pos2(char **pos, int i)
   if ((pos[i][6] < 'A' && pos[i][6] > 'H') ||
       (pos[i][6] < '1' && pos[i][6] > '8'))
     return (-1);
+  return (0);
 }
 
 int	check_pos(char **pos)
@@ -92,22 +98,14 @@ int	check_pos(char **pos)
   while (pos[i])
     {
       my_strcapitalize(pos[i]);
-      if (check_pos2(pos, i) == -1)
+      if (check_pos2(pos, i) == -1 || check_lol(pos[i]) == -1)
 	{
 	  my_puterror("bad boat\n");
 	  return (-1);
 	}
       len = pos[i++][0] - '0' + len;
     }
-  if (len != 14)
-    {
-      my_puterror("bad boat\n");
-      return (-1);
-    }
-  if (i != 4)
-    {
-      my_puterror("bad boat\n");
-      return (-1);
-    }
+  if (meow(len, i) == -1)
+    return (-1);
   return (0);
 }

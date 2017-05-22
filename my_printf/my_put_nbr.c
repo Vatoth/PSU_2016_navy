@@ -5,7 +5,7 @@
 ** Login   <Vatoth@epitech.net>
 **
 ** Started on  Mon Oct 11 10:58:54 2016 Quentin Sonnefraud
-** Last update Wed Nov  9 10:51:55 2016 Quentin Sonnefraud
+** Last update Mon Feb 20 12:38:25 2017 Vatoth
 */
 
 #include "include/my.h"
@@ -21,7 +21,7 @@ int	my_put_nbr(int nb)
     }
   if (nb > 0)
     {
-      if ( nb > 9)
+      if (nb > 9)
 	{
 	  modulo = nb % 10;
 	  nb = (nb - modulo) / 10;
@@ -33,4 +33,5 @@ int	my_put_nbr(int nb)
 	  my_putchar(nb + 48);
 	}
     }
+  return (0);
 }

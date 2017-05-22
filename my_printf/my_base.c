@@ -5,7 +5,7 @@
 ** Login   <Vatoth@epitech.net>
 ** 
 ** Started on  Tue Nov 15 12:08:39 2016 Quentin Sonnefraud
-** Last update Fri Feb 10 10:10:45 2017 Vatoth
+** Last update Sun Feb 19 10:40:24 2017 Vatoth
 */
 
 #include "include/my.h"
@@ -13,7 +13,7 @@
 int	my_base(int nb, char *base)
 {
   int	result;
-  int	rest;
+  int	modulo;
 
   if (nb < 0)
     {
@@ -21,9 +21,9 @@ int	my_base(int nb, char *base)
       nb = nb * -1;
     }
   result = nb / my_strlen(base);
-  rest = nb % my_strlen(base);
+  modulo = nb % my_strlen(base);
   if (result > 0)
     my_base(result, base);
-  my_putchar(base[rest]);
+  my_putchar(base[modulo]);
   return (0);
 }

@@ -5,16 +5,19 @@
 ** Login   <Vatoth@epitech.net>
 **
 ** Started on  Tue Jan 31 14:20:24 2017 Quentin Sonnefraud
-** Last update Fri Feb 10 22:53:24 2017 Quentin Sonnefraud
+** Last update Sun Feb 19 11:20:52 2017 Vatoth
 */
 
 #include "navy.h"
 
-int	print_h(void)
+void	print_h(void)
 {
   my_printf("USAGE\n           ./navy [first_player_pid] navy_positions\n");
-  my_printf("DESCRIPTION\n           first_player_pid only for the 2nd player. pid of the first player.\n");
-  my_printf("            navy_positionsfile representing the positions of the ships\n");
+  my_printf("DESCRIPTION\n           ");
+  my_printf(" first_player_pid only for the 2nd player. ");
+  my_printf("pid of the first player.\n");
+  my_printf("            ");
+  my_printf("navy_positions file representing the positions of the ships\n");
 }
 
 void	my_puterror(char *str)

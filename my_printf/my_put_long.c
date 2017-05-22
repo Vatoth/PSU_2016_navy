@@ -5,7 +5,7 @@
 ** Login   <Vatoth@epitech.net>
 ** 
 ** Started on  Wed Nov  9 11:43:59 2016 Quentin Sonnefraud
-** Last update Wed Nov  9 16:03:50 2016 Quentin Sonnefraud
+** Last update Sat Feb 18 13:02:41 2017 Quentin Sonnefraud
 */
 
 #include "include/my.h"
@@ -21,7 +21,7 @@ void	my_put_long(long nb)
     }
   if (nb > 0)
     {
-      if ( nb > 9)
+      if (nb > 9)
 	{
 	  modulo = nb % 10;
 	  nb = (nb - modulo) / 10;

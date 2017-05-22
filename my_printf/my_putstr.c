@@ -5,20 +5,20 @@
 ** Login   <Vatoth@epitech.net>
 ** 
 ** Started on  Thu Oct  6 16:03:08 2016 Quentin Sonnefraud
-** Last update Wed Nov  9 10:51:32 2016 Quentin Sonnefraud
+** Last update Mon Feb 20 12:37:57 2017 Vatoth
 */
 
 #include "include/my.h"
 
 int	my_putstr(char *str)
 {
-  char	c;
+  int	i;
 
-  c = 0;
-  while (str[c] != '\0')
+  i = 0;
+  while (str[i])
     {
-      my_putchar(str[c]);
-      c = c + 1;
+      my_putchar(str[i]);
+      i++;
     }
   return (0);
 }

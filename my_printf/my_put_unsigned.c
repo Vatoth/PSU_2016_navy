@@ -5,7 +5,7 @@
 ** Login   <Vatoth@epitech.net>
 **
 ** Started on  Thu Nov 17 12:06:37 2016 Quentin Sonnefraud
-** Last update Thu Nov 17 12:08:57 2016 Quentin Sonnefraud
+** Last update Mon Feb 20 12:41:48 2017 Vatoth
 */
 
 #include "include/my.h"
@@ -14,14 +14,9 @@ int     my_put_unsigned(unsigned int nb)
 {
   int   modulo;
 
-  if (nb < 0)
-    {
-      my_putchar('-');
-      nb = nb * -1;
-    }
   if (nb > 0)
     {
-      if ( nb > 9)
+      if (nb > 9)
 	{
 	  modulo = nb % 10;
 	  nb = (nb - modulo) / 10;
@@ -33,4 +28,5 @@ int     my_put_unsigned(unsigned int nb)
 	  my_putchar(nb + 48);
 	}
     }
+  return (0);
 }

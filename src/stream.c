@@ -5,7 +5,7 @@
 ** Login   <Vatoth@epitech.net>
 **
 ** Started on  Wed Feb  1 19:09:25 2017 Quentin Sonnefraud
-** Last update Fri Feb 10 13:42:34 2017 Quentin Sonnefraud
+** Last update Mon Feb 20 11:58:36 2017 Vatoth
 */
 
 #include "navy.h"
@@ -17,6 +17,7 @@ void		reception(int signum, siginfo_t *info, void *ptr)
   static int	nb = 0;
   static int	pid = 0;
 
+  (void)ptr;
   g_global = 0;
   if (signum == SIGUSR2 && nb == 0)
     {
@@ -72,4 +73,5 @@ int	put_sig(int pid, int nb)
 	  return (-1);
 	}
     }
+  return (0);
 }
