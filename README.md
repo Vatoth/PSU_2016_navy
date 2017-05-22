@@ -31,6 +31,6 @@ DESCRIPTION :
 ## Authors
 
 * **Quentin Sonnefraud** -*Map parsing and connection between the processus* - [Vatoth](https://github.com/Vatoth)
-* **Alistair Hurst** -*Map parsing* -
+* **Alistair Hurst** -*Map parsing* - [SeriousJames](https://github.com/SeriousJames)
 
 Made with love at Epitech Paris in 2017
